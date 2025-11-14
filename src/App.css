@@ -1,0 +1,281 @@
+/* Configurações Globais */
+:root {
+    --primary-color: #249689;
+    --white-color: #ffffff;
+    --light-gray-color: #f4f4f4;
+    --dark-text-color: #333;
+    --light-text-color: #555;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-text-color);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header e Navegação */
+header {
+    background-color: var(--white-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 25px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: var(--light-text-color);
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Seções Padrão */
+section {
+    padding: 60px 0;
+}
+
+section:nth-child(even) {
+    background-color: var(--light-gray-color);
+}
+
+h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: var(--light-text-color);
+}
+
+/* Estilos do Hero (Home) */
+.hero {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 80px 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero .subtitle {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: var(--white-color);
+    opacity: 0.9;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: var(--white-color);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--light-gray-color);
+    color: #1a6d63; /* Tom mais escuro do primário */
+}
+
+/* Seção Solução - Logos de Tecnologia */
+.tech-logos {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.tech-logo {
+    text-align: center;
+}
+
+.tech-logo img {
+    height: 60px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.tech-logo span {
+    display: block;
+    font-weight: 700;
+    color: var(--light-text-color);
+}
+
+
+/* Seção Funcionalidades */
+.features-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.feature-column {
+    width: 48%;
+    background-color: var(--white-color);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.feature-column h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--light-gray-color);
+    padding-bottom: 10px;
+}
+
+.feature-column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.feature-column ul li {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.feature-column ul li::before {
+    content: '✓';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* Seção Equipe */
+#equipe {
+    text-align: center;
+}
+
+.team-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.team-list li {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark-text-color);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: var(--white-color);
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    color: var(--white-color);
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* Responsividade (Mobile) */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 15px;
+    }
+
+    header nav ul li {
+        margin-left: 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .features-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .feature-column {
+        width: 100%;
+    }
+}
