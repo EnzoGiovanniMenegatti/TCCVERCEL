@@ -1,124 +1,154 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Importa o React e o hook 'useState'
+import React, { useState } from 'react';
+import './App.css';
 
+// Este é o componente principal do seu site
 function App() {
-  const [count, setCount] = useState(0)
+  // Estado para controlar se o menu mobile está aberto ou fechado
+  const [menuAberto, setMenuAberto] = useState(false);
+
+  // Função para fechar o menu (usada ao clicar num link)
+  const fecharMenu = () => {
+    setMenuAberto(false);
+  };
 
   return (
-<body>
+    <div className="App">
+      
+      {/* --- HEADER --- */}
+      <header className="header">
+        <div className="container">
+          <div className="logo">Bariatric Health Care</div>
 
-    <header>
-        <div class="container">
-            <div class="logo">Bariatric Health Care</div>
-            <nav>
+          {/* Botão Hambúrguer (só aparece em mobile) */}
+          <button 
+            className={`menu-toggle ${menuAberto ? 'ativo' : ''}`}
+            onClick={() => setMenuAberto(!menuAberto)}
+            aria-label="Abrir menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          {/* Navegação - ganha classe 'ativa' quando o estado 'menuAberto' é true */}
+          <nav className={menuAberto ? 'ativa' : ''}>
+            <ul>
+              {/* Cada link agora fecha o menu ao ser clicado */}
+              <li><a href="#home" onClick={fecharMenu}>Início</a></li>
+              <li><a href="#problema" onClick={fecharMenu}>O Problema</a></li>
+              <li><a href="#solucao" onClick={fecharMenu}>A Solução</a></li>
+              <li><a href="#funcionalidades" onClick={fecharMenu}>Funcionalidades</a></li>
+              <li><a href="#equipe" onClick={fecharMenu}>Equipe</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        {/* --- SEÇÃO HERO (HOME) --- */}
+        <section id="home" className="hero">
+          <div className="container">
+            <h1>Bariatric Health Care</h1>
+            <p className="subtitle">Ferramenta Mobile para Monitoramento e Acompanhamento de Pacientes Pós-Bariátricos</p>
+            <p>
+              Um aplicativo focado em complementar o atendimento nutricional, visando monitorar sinais e sintomas relacionados à falta de macros e micronutrientes.
+            </p>
+            <a href="#funcionalidades" className="btn-primary">Conheça as Funcionalidades</a>
+          </div>
+        </section>
+
+        {/* --- SEÇÃO O PROBLEMA --- */}
+        <section id="problema" className="section">
+          <div className="container">
+            <h2>O Problema</h2>
+            <p>
+              A obesidade é uma das doenças que mais cresce no Brasil, com 34% da população adulta apresentando algum grau em 2024. 
+              A cirurgia bariátrica é um tratamento eficaz, mas apresenta riscos de longo prazo, como deficiências nutricionais e distúrbios psicológicos.
+            </p>
+            <p>
+              Para garantir resultados, o acompanhamento multidisciplinar é fundamental para prevenir complicações e promover uma melhor qualidade de vida.
+            </p>
+          </div>
+        </section>
+
+        {/* --- SEÇÃO A SOLUÇÃO --- */}
+        <section id="solucao" className="section section-light">
+          <div className="container">
+            <h2>A Solução Proposta</h2>
+            <p>
+              O <strong>Bariatric Health Care</strong> é uma ferramenta mobile desenvolvida para auxiliar no acompanhamento pós-cirurgia bariátrica, melhorando a qualidade de vida de pacientes e profissionais da nutrição.
+            </p>
+            <p>
+              Utilizando <strong>Flutter/Dart</strong> com backend em <strong>Firebase (BaaS)</strong>, o aplicativo serve como um complemento direto ao atendimento profissional.
+            </p>
+            <div className="tech-stack">
+              <span>Flutter</span>
+              <span>Dart</span>
+              <span>Firebase</span>
+              <span>FlutterFlow</span>
+            </div>
+          </div>
+        </section>
+
+        {/* --- SEÇÃO FUNCIONALIDADES --- */}
+        <section id="funcionalidades" className="section">
+          <div className="container">
+            <h2>Funcionalidades Principais</h2>
+            <div className="features-grid">
+              
+              <div className="feature-card">
+                <h3>Para Pacientes</h3>
                 <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#problema">O Problema</a></li>
-                    <li><a href="#solucao">A Solução</a></li>
-                    <li><a href="#funcionalidades">Funcionalidades</a></li>
-                    <li><a href="#equipe">Equipe</a></li>
+                  <li>Visualização do plano alimentar designado</li>
+                  <li>Registro de progresso (diário alimentar, peso, etc.)</li>
+                  <li>Preenchimento de questionários recorrentes de sintomas</li>
+                  <li>Comunicação direta com seu nutricionista</li>
+                  <li>Acesso ao perfil do profissional vinculado</li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h1>Bariatric Health Care</h1>
-                [cite_start]<p class="subtitle">Ferramenta Mobile para Monitoramento e Acompanhamento de Pacientes Pós-Bariátricos [cite: 7]</p>
-                [cite_start]<p>Um aplicativo focado em complementar o atendimento nutricional e monitorar sinais e sintomas de deficiências nutricionais no pós-operatório. [cite: 21, 27]</p>
-                <a href="#funcionalidades" class="btn">Conheça as Funcionalidades</a>
-            </div>
-        </section>
-
-        <section id="problema">
-            <div class="container">
-                <h2>O Problema</h2>
-                [cite_start]<p>A obesidade é uma das doenças que mais cresce no Brasil, com 34% da população adulta apresentando algum grau em 2024[cite: 54, 55]. [cite_start]A cirurgia bariátrica é um tratamento eficaz [cite: 60][cite_start], mas apresenta riscos de longo prazo, como deficiências nutricionais e distúrbios psicológicos[cite: 61].</p>
-                [cite_start]<p>Para garantir resultados, o acompanhamento multidisciplinar é fundamental para prevenir complicações e promover uma melhor qualidade de vida. [cite: 62, 63]</p>
-            </div>
-        </section>
-
-        <section id="solucao">
-            <div class="container">
-                <h2>A Solução Proposta</h2>
-                [cite_start]<p>O <strong>Bariatric Health Care</strong> é uma ferramenta mobile desenvolvida com o objetivo de auxiliar no acompanhamento pós-cirurgia bariátrica, melhorando a qualidade de vida de pacientes e profissionais da nutrição. [cite: 66, 76]</p>
-                [cite_start]<p>Utilizando <strong>Flutter/Dart</strong> com backend em <strong>Firebase</strong> [cite: 20, 26][cite_start], o aplicativo visa monitorar sinais e sintomas relacionados à falta de macros e micronutrientes[cite: 21], servindo como um complemento direto ao atendimento profissional.</p>
-                
-                <div class="tech-logos">
-                    <div class="tech-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Flutter-logo.svg/768px-Flutter-logo.svg.png" alt="Flutter"/>
-                        <span>Flutter</span>
-                    </div>
-                    <div class="tech-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Firebase_Logo.svg/1024px-Firebase_Logo.svg.png" alt="Firebase"/>
-                        <span>Firebase</span>
-                    </div>
-                    <div class="tech-logo">
-                        <img src="https://seeklogo.com/images/D/dart-logo-FDA1A5C61D-seeklogo.com.png" alt="Dart"/>
-                        <span>Dart</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="funcionalidades">
-            <div class="container">
-                <h2>Funcionalidades Principais</h2>
-                <div class="features-grid">
-                    
-                    <div class="feature-column">
-                        <h3>Para o Paciente</h3>
-                        <ul>
-                            [cite_start]<li>Visualização de plano alimentar designado pelo nutricionista. [cite: 108]</li>
-                            [cite_start]<li>Registro de progresso (diário alimentar, peso, etc.). [cite: 109]</li>
-                            [cite_start]<li>Preenchimento de questionários recorrentes de sintomas. [cite: 22, 28]</li>
-                            [cite_start]<li>Comunicação direta com o profissional vinculado. [cite: 110]</li>
-                            [cite_start]<li>Acesso ao perfil e informações do seu nutricionista. [cite: 111]</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-column">
-                        <h3>Para o Nutricionista</h3>
-                        <ul>
-                            [cite_start]<li>Gestão da lista de pacientes vinculados. [cite: 99]</li>
-                            [cite_start]<li>Geração de relatórios de sintomas e nutrientes em PDF. [cite: 22]</li>
-                            [cite_start]<li>Visualização do histórico completo e perfil dos pacientes. [cite: 100]</li>
-                            [cite_start]<li>Recebimento de notificações (ex: primeiro login, formulários preenchidos). [cite: 103]</li>
-                            [cite_start]<li>Canal de comunicação seguro com seus pacientes. [cite: 104]</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="equipe">
-            <div class="container">
-                <h2>Equipe de Desenvolvimento</h2>
-                [cite_start]<p>Trabalho desenvolvido para finalização do curso de Bacharelado em Sistemas de Informação da Universidade de Mogi das Cruzes. [cite: 1, 2, 15]</p>
-                <ul class="team-list">
-                    [cite_start]<li>Matheus Mencinauski de Sousa [cite: 3]</li>
-                    [cite_start]<li>Luiz Gustavo Rocha Gomes [cite: 4]</li>
-                    [cite_start]<li>Enzo Giovanni Menegatti [cite: 5]</li>
-                    [cite_start]<li>Fernando Faria Hong [cite: 6]</li>
+              </div>
+              
+              <div className="feature-card">
+                <h3>Para Nutricionistas</h3>
+                <ul>
+                  <li>Gestão da lista de pacientes vinculados</li>
+                  <li>Geração de relatórios de sintomas e nutrientes em PDF</li>
+                  <li>Visualização do histórico completo dos pacientes</li>
+                  <li>Recebimento de notificações (ex: primeiro login, formulários)</li>
+                  <li>Canal de comunicação seguro com pacientes</li>
                 </ul>
-                [cite_start]<p><strong>Orientador:</strong> Prof. Terigi Augsto Scardovelli [cite: 15]</p>
+              </div>
+
             </div>
+          </div>
         </section>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 - Bariatric Health Care | [cite_start]Universidade de Mogi das Cruzes [cite: 1, 9]</p>
+        {/* --- SEÇÃO EQUIPE --- */}
+        <section id="equipe" className="section section-light">
+          <div className="container text-center">
+            <h2>Equipe de Desenvolvimento</h2>
+            <p>Trabalho de Final de Curso de Bacharelado em Sistemas de Informação.</p>
+            <ul className="team-list">
+              <li>Enzo Giovanni Menegatti</li>
+              <li>Fernando Faria Hong</li>
+              <li>Luiz Gustavo Rocha Gomes</li>
+              <li>Matheus Mencinauski de Sousa</li>
+            </ul>
+            <p><strong>Orientador:</strong> Prof. Terigi Augsto Scardovelli</p>
+            <p className="university">Universidade de Mogi das Cruzes</p>
+          </div>
+        </section>
+      </main>
+
+      {/* --- FOOTER --- */}
+      <footer className="footer">
+        <div className="container">
+          <p>&copy; {new Date().getFullYear()} - Bariatric Health Care - TCC</p>
         </div>
-    </footer>
+      </footer>
 
-    <script src="script.js"></script>
-</body>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

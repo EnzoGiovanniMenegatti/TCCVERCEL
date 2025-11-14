@@ -1,281 +1,362 @@
-/* Configurações Globais */
+/* Importa uma fonte limpa do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* --- VARIÁVEIS DE COR --- */
 :root {
-    --primary-color: #249689;
-    --white-color: #ffffff;
-    --light-gray-color: #f4f4f4;
-    --dark-text-color: #333;
-    --light-text-color: #555;
+  --primary-color: #249689;
+  --white-color: #ffffff;
+  --dark-text-color: #333;
+  --light-text-color: #555;
+  --section-light-bg: #f4f4f4;
+  --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.05);
+  --shadow-dark: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* --- RESET GLOBAL E FONTES --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-    font-family: 'Roboto', 'Arial', sans-serif;
-    line-height: 1.6;
-    color: var(--dark-text-color);
+  font-family: 'Roboto', 'Arial', sans-serif;
+  color: var(--dark-text-color);
+  line-height: 1.6;
 }
 
 .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-/* Header e Navegação */
-header {
-    background-color: var(--white-color);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+/* --- HEADER E NAVEGAÇÃO --- */
+.header {
+  background-color: var(--white-color);
+  box-shadow: var(--shadow-dark);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  position: relative; /* Necessário para o menu mobile */
 }
 
-header .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
+.header .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  z-index: 1002; /* Para ficar acima do menu mobile */
 }
 
-header nav ul {
-    list-style: none;
-    display: flex;
+.header nav ul {
+  display: flex;
+  list-style: none;
 }
 
-header nav ul li {
-    margin-left: 25px;
+.header nav ul li {
+  margin-left: 1.5rem;
 }
 
-header nav ul li a {
-    text-decoration: none;
-    color: var(--light-text-color);
-    font-weight: 700;
-    transition: color 0.3s ease;
+.header nav ul li a {
+  text-decoration: none;
+  color: var(--light-text-color);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
 }
 
-header nav ul li a:hover {
-    color: var(--primary-color);
+.header nav ul li a:hover {
+  color: var(--primary-color);
 }
 
-/* Seções Padrão */
-section {
-    padding: 60px 0;
+/* --- BOTÃO HAMBÚRGUER (INÍCIO) --- */
+.menu-toggle {
+  display: none; /* Escondido em desktop */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1002; /* Para ficar acima do menu mobile */
 }
 
-section:nth-child(even) {
-    background-color: var(--light-gray-color);
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+/* Animação do "X" do hambúrguer */
+.menu-toggle.ativo span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.ativo span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.ativo span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+/* --- BOTÃO HAMBÚRGUER (FIM) --- */
+
+
+/* --- ESTILOS DE SEÇÃO GERAL --- */
+.section {
+  padding: 4rem 0;
+}
+
+.section-light {
+  background-color: var(--section-light-bg);
 }
 
 h2 {
-    font-size: 2.2rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 p {
-    margin-bottom: 15px;
-    font-size: 1rem;
-    color: var(--light-text-color);
+  font-size: 1rem;
+  color: var(--light-text-color);
+  margin-bottom: 1rem;
+  max-width: 700px; /* Melhora a legibilidade */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Estilos do Hero (Home) */
+.text-center {
+  text-align: center;
+}
+
+/* --- SEÇÃO HERO (HOME) --- */
 .hero {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    text-align: center;
-    padding: 80px 0;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 5rem 0;
+  text-align: center;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .hero .subtitle {
-    font-size: 1.3rem;
-    font-weight: 300;
-    margin-bottom: 20px;
-    color: var(--white-color);
-    opacity: 0.9;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: var(--white-color);
+  opacity: 0.9;
 }
 
 .hero p {
-    font-size: 1.1rem;
-    color: var(--white-color);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
+  color: var(--white-color);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
 }
 
-.btn {
-    display: inline-block;
-    background-color: var(--white-color);
-    color: var(--primary-color);
-    padding: 12px 25px;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.btn-primary {
+  display: inline-block;
+  background-color: var(--white-color);
+  color: var(--primary-color);
+  padding: 12px 25px;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
-.btn:hover {
-    background-color: var(--light-gray-color);
-    color: #1a6d63; /* Tom mais escuro do primário */
+.btn-primary:hover {
+  background-color: var(--section-light-bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-dark);
 }
 
-/* Seção Solução - Logos de Tecnologia */
-.tech-logos {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 40px;
+/* --- SEÇÃO SOLUÇÃO (TECH STACK) --- */
+.tech-stack {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Adicionado para quebrar em telas pequenas */
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-.tech-logo {
-    text-align: center;
+.tech-stack span {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
 }
 
-.tech-logo img {
-    height: 60px;
-    margin-bottom: 10px;
-    object-fit: contain;
-}
-
-.tech-logo span {
-    display: block;
-    font-weight: 700;
-    color: var(--light-text-color);
-}
-
-
-/* Seção Funcionalidades */
+/* --- SEÇÃO FUNCIONALIDADES --- */
 .features-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.feature-column {
-    width: 48%;
-    background-color: var(--white-color);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+.feature-card {
+  background-color: var(--white-color);
+  border: 1px solid #eee;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
 }
 
-.feature-column h3 {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--light-gray-color);
-    padding-bottom: 10px;
+.feature-card h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
 }
 
-.feature-column ul {
-    list-style: none;
-    padding-left: 0;
+.feature-card ul {
+  list-style: none;
 }
 
-.feature-column ul li {
-    font-size: 1rem;
-    color: var(--light-text-color);
-    margin-bottom: 15px;
-    position: relative;
-    padding-left: 30px;
+.feature-card ul li {
+  font-size: 1rem;
+  color: var(--light-text-color);
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.8rem;
 }
 
-.feature-column ul li::before {
-    content: '✓';
-    color: var(--primary-color);
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
-    font-size: 1.2rem;
+/* Adiciona um "check" verde */
+.feature-card ul li::before {
+  content: '✓';
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
-/* Seção Equipe */
-#equipe {
-    text-align: center;
-}
-
+/* --- SEÇÃO EQUIPE --- */
 .team-list {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px 30px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .team-list li {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--dark-text-color);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark-text-color);
 }
 
-/* Footer */
-footer {
-    background-color: #333;
-    color: var(--white-color);
-    text-align: center;
-    padding: 20px 0;
+.university {
+  font-style: italic;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
 }
 
-footer p {
-    color: var(--white-color);
-    opacity: 0.8;
-    margin: 0;
+/* --- FOOTER --- */
+.footer {
+  background-color: var(--dark-text-color);
+  color: var(--white-color);
+  text-align: center;
+  padding: 2rem 0;
 }
 
-/* Responsividade (Mobile) */
+.footer p {
+  color: var(--white-color);
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 768px) {
-    header .container {
-        flex-direction: column;
-        gap: 15px;
-    }
+  
+  /* Ajustes de fonte para mobile */
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero .subtitle {
+    font-size: 1.1rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
 
-    header nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 15px;
-    }
+  /* Grid de funcionalidades vira coluna única */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
 
-    header nav ul li {
-        margin-left: 0;
-    }
+  /* --- LÓGICA DO MENU HAMBÚRGUER --- */
+  
+  /* Mostra o botão hambúrguer */
+  .menu-toggle {
+    display: block;
+  }
 
-    .hero h1 {
-        font-size: 2.5rem;
-    }
+  /* Esconde a navegação desktop */
+  .header nav {
+    /* Posiciona o menu flutuante */
+    position: absolute;
+    top: 80px; /* Abaixo do header */
+    left: 0;
+    width: 100%;
+    background-color: var(--white-color);
+    box-shadow: var(--shadow-dark);
+    
+    /* Esconde o menu */
+    transform: translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1001;
+  }
 
-    .hero .subtitle {
-        font-size: 1.1rem;
-    }
+  /* Mostra o menu quando a classe 'ativa' é aplicada */
+  .header nav.ativa {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 
-    .features-grid {
-        flex-direction: column;
-        gap: 20px;
-    }
+  /* Faz a lista de links ficar vertical */
+  .header nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
 
-    .feature-column {
-        width: 100%;
-    }
+  .header nav ul li {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .header nav ul li a {
+    display: block;
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid var(--section-light-bg);
+  }
+
+  .header nav ul li a:hover {
+    background-color: var(--section-light-bg);
+  }
 }
